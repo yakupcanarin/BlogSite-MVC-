@@ -1,0 +1,97 @@
+﻿@model PagedList.IPagedList<BlogSite.Data.Models.User>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header id="gtco-header" class="gtco-cover" role="banner" style="background-image: url(/images/galata.jpg)">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+                <div class="row row-mt-15em">
+                    <div class="gtco-container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6 animate-box" id="ListUser">
+
+                                    <h3 id="CategoryList">
+                                        List of Categories
+                                        <input type="search" onkeyup="Search()" id="CategorySearch" name="search" placeholder="Search..." url="/images/searchicon.png" />
+                                    </h3>
+
+                                    <form action="#" id="ListForm">
+                                        <div class="row form-group" id="table">
+                                            <table class="table" id="CategoryTable">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name - Surname</th>
+                                                    <th>E-Mail</th>
+                                                    <th>Password</th>
+                                                    <th>Sign Up Date</th>
+                                                    <th>Status</th>
+                                                    <th>Role</th>
+                                                    <th>Operations</th>
+                                                </tr>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td id="ID">@item.ID</td>
+                                                        <td>@item.Name_Surname</td>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.Password</td>
+                                                        <td>@item.SignUp_Date</td>
+                                                        <td>
+                                                            @if (item.Status == true)
+                                                            {
+                                                                <b class="label label-success">Active</b>
+                                                            }
+                                                            else
+                                                            {
+                                                                <b class="label label-danger">Inactive</b>
+                                                            }
+                                                        </td>
+                                                        <td>@item.Role.RoleName</td>
+                                                        <td>
+                                                            <a href="@Url.Action("Update","User",new { ID = item.ID})" class="btn btn-primary">Update</a>
+                                                            <a href="@Url.Action("Delete","User",new { ID = item.ID})" class="btn btn-primary">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </div>
+                                    </form>
+                                    @Html.PagedListPager(Model, Page => Url.Action("List", new { Page }), PagedListRenderOptions.Classic)
+                                </div>
+                                <div class="col-md-5 col-md-push-1 animate-box">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    function Search() {
+        var tr, td;
+        input = document.getElementById("CategorySearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("CategoryTable");
+        tr = table.getElementsByTagName("tr");
+        for (var i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                }
+                else {
+                    tr[i].style.display = "none";
+                }
+            }
+
+        }
+    }
+</script>

@@ -1,0 +1,84 @@
+﻿@model BlogSite.Data.Models.Category
+    @{
+        ViewBag.Title = "Insert";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="/Content/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="/Content/icomoon.css">
+    <!-- Themify Icons-->
+    <link rel="stylesheet" href="/Content/themify-icons.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="/Content/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="/Content/magnific-popup.css">
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/owl.theme.default.min.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="/Content/style.css">
+    <!-- Modernizr JS -->
+    <script src="/Scripts/modernizr-2.6.2.min.js"></script>
+
+
+    <header id="gtco-header" class="gtco-cover" role="banner" style="background-image: url(/images/galata.jpg)">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="row row-mt-15em">
+                        <div class="gtco-container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-6 animate-box">
+                                        <h3>Add New Category</h3>
+                                        <form action="#">
+                                            <div class="row form-group">
+                                                <div class="col-md-12" id="AddCategory">
+                                                    <label class="sr-only" for="name">Name</label>
+                                                    <input type="text" id="insert" class="form-control" placeholder="Category Name">
+                                                </div>
+                                                <div class="col-md-12" id="insert">
+                                                    <input type="checkbox" id="IsActive" checked>
+                                                    <label id="isActive" for="Active">Is Active ?</label>
+                                                </div>
+                                                <div class="col-md-12" id="AddCategory">
+                                                    <label class="sr-only" for="ID">Admin ID</label>
+                                                    @Html.TextBoxFor(x => TempData["ID"], new { type = "text", id = "userID", @class = "form-control"})
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="Add Category" onclick="AddCategory()" class="btn btn-primary">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-5 col-md-push-1 animate-box">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- jQuery -->
+    <script src="/Scripts/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="/Scripts/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="/Scripts/jquery.waypoints.min.js"></script>
+    <!-- Carousel -->
+    <script src="/Scripts/owl.carousel.min.js"></script>
+    <!-- countTo -->
+    <script src="/Scripts/jquery.countTo.js"></script>
+    <!-- Magnific Popup -->
+    <script src="/Scripts/jquery.magnific-popup.min.js"></script>
+    <script src="/Scripts/magnific-popup-options.js"></script>
+    <!-- Main -->
+    <script src="/Scripts/main.js"></script>
